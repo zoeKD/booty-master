@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.3.5'
 
+gem 'acts-as-taggable-on', '~> 4.0'
+
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'

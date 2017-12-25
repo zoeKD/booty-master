@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171225175446) do
+ActiveRecord::Schema.define(version: 20171225184537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "fitness_sessions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "video_id"
+    t.date "done_at"
+    t.text "comment"
+    t.string "state"
+    t.bigint "workout_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_fitness_sessions_on_user_id"
+    t.index ["video_id"], name: "index_fitness_sessions_on_video_id"
+    t.index ["workout_id"], name: "index_fitness_sessions_on_workout_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,4 +46,47 @@ ActiveRecord::Schema.define(version: 20171225175446) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "video_workouts", force: :cascade do |t|
+    t.bigint "video_id"
+    t.bigint "workout_id"
+    t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["video_id"], name: "index_video_workouts_on_video_id"
+    t.index ["workout_id"], name: "index_video_workouts_on_workout_id"
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "url"
+    t.integer "intensity"
+    t.bigint "user_id"
+    t.integer "views"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.time "duration"
+    t.index ["user_id"], name: "index_videos_on_user_id"
+  end
+
+  create_table "workouts", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "url"
+    t.integer "intensity"
+    t.time "duration"
+    t.bigint "user_id"
+    t.integer "views"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_workouts_on_user_id"
+  end
+
+  add_foreign_key "fitness_sessions", "users"
+  add_foreign_key "fitness_sessions", "videos"
+  add_foreign_key "fitness_sessions", "workouts"
+  add_foreign_key "video_workouts", "videos"
+  add_foreign_key "video_workouts", "workouts"
+  add_foreign_key "videos", "users"
+  add_foreign_key "workouts", "users"
 end
