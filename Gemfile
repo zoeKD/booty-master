@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.3.5'
 
+gem 'acts-as-taggable-on', '~> 4.0'
+
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
@@ -16,6 +18,7 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'foreman'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

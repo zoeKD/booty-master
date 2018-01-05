@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  video: one
+  workout: one
+  order: 1
+
+two:
+  video: two
+  workout: two
+  order: 1

@@ -1,0 +1,10 @@
+<% @videos.each do |video| %>
+  <img src="<%= image_path video.thumbnail unless video.thumbnail.nil? %>" class="video-thumbnail">
+  <%= video.name %>
+  <%= link_to "Editer", edit_video_path(video) %>
+<% end %>
+
+
+<% if @videos.size == 0 %>
+  Pas encore de vidéo
+<% end %>

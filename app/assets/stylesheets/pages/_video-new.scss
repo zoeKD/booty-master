@@ -1,0 +1,44 @@
+.form-yt-url {
+  margin: 40px 20px 80px;
+  input[type="text"]{
+    min-width: 300px;
+  }
+}
+
+.error-message {
+  color: $brand-danger;
+  font-size: 15px;
+}
+
+.inline-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  div:first-child {
+    flex:1
+  }
+  > div:last-child {
+    margin-left: 30px;
+  }
+}
+
+.inline-intensity {
+  display: flex;
+  justify-content: space-between;
+}
+
+.intensity-selector {
+  background-color: white;
+  width: 33%;
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 10px 0px;
+  border-radius: 1px;
+}
+
+.active {
+  background-color: $brand-primary;
+  color: white;
+}

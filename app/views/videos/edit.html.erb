@@ -1,0 +1,23 @@
+<div class="text-center">
+  <h2>Editer une vidéo</h2>
+</div>
+
+<form action="/" class="form-inline form-yt-url">
+  <div class="form-group">
+    <input type="text" class="form-control" id="yt-url" value="https://www.youtube.com/watch?v=<%= @video.url %>" placeholder="Ajouter une chouette url">
+    <input type="submit" class="btn btn-primary" value="Go booty" id="find-yt-url">
+  </div>
+</form>
+
+<div class="container">
+  <div class="row">
+    <div>
+      <div class="col-xs-12 col-md-6">
+          <%= render 'video-form', video: @video %>
+      </div>
+      <div class="col-xs-12 col-md-6">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/#{@video.url}" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
