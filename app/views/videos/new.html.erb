@@ -1,1 +1,30 @@
-new.html.erb
+<div id="video-new">
+  <div class="text-center">
+    <h2>Ajouter une vidéo</h2>
+  </div>
+  <form action="/" class="form-inline form-yt-url">
+    <div class="form-group">
+      <input v-model="videoUrl" type="text" class="form-control" placeholder="Ajouter une chouette url">
+      <input @click="loadVideo" type="submit" class="btn btn-primary" value="Go booty">
+    </div>
+     <span class="error-message">{{ error }}</span>
+  </form>
+  <div class="container">
+    <div class="row">
+      <div v-show="displayDefault">
+        <div class="col-xs-12 text-center">
+          <p>Commençons par ajouter une vidéo pour shaker ce booty !</p>
+          <%= image_tag "logo-booty-violet.png" %>
+        </div>
+      </div>
+      <div v-show="displayResult" class="yt-result">
+        <div class="col-xs-12 col-md-6">
+            <%= render 'video-form', video: @video %>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <iframe width="560" height="315" v-bind:src="iframeUrl" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

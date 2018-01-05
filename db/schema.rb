@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171225193901) do
+ActiveRecord::Schema.define(version: 20180105170001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,7 +94,8 @@ ActiveRecord::Schema.define(version: 20171225193901) do
     t.integer "views"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.time "duration"
+    t.integer "video_duration"
+    t.string "thumbnail"
     t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
@@ -103,11 +104,11 @@ ActiveRecord::Schema.define(version: 20171225193901) do
     t.text "description"
     t.string "url"
     t.integer "intensity"
-    t.time "duration"
     t.bigint "user_id"
     t.integer "views"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "workout_duration"
     t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 

@@ -8,6 +8,7 @@ class CreateWorkouts < ActiveRecord::Migration[5.1]
       t.time :duration
       t.references :user, foreign_key: true
       t.integer :views
+      t.time :duration
 
       t.timestamps
     end

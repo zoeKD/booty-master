@@ -3,13 +3,21 @@
 * ------------------------------------- */
 
 .alert {
-  margin: 0;
+  margin-left: 200px;
   text-align: center;
   color: white;
+  border: 0;
 }
 .alert-info {
   background: $green;
 }
 .alert-warning {
   background: $red;
+}
+
+@media (max-width: 786px) {
+  .alert {
+    margin-left:0px;
+    margin-top: 60px;
+  }
 }

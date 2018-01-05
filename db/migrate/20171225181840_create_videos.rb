@@ -7,6 +7,7 @@ class CreateVideos < ActiveRecord::Migration[5.1]
       t.integer :intensity
       t.references :user, foreign_key: true
       t.integer :views
+      t.time :duration
 
       t.timestamps
     end
