@@ -10,6 +10,10 @@
   font-size: 15px;
 }
 
+.new-video {
+  margin-top: -18px;
+}
+
 .inline-box {
   display: flex;
   align-items: center;
@@ -22,20 +26,36 @@
   }
 }
 
-.inline-intensity {
-  display: flex;
-  justify-content: space-between;
+.control-label {
+  margin-bottom: 10px;
+  margin-top: 15px;
 }
 
-.intensity-selector {
+.inline-intensity, .inline-zone {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  input {
+    display: none;
+  }
+  span {
+    width: 33%;
+  }
+  label {
+    width: 100%;
+    cursor: pointer;
+  }
+}
+
+.collection_radio_buttons, .collection_check_boxes {
   background-color: white;
-  width: 33%;
+  width: 100% !important;
   text-align: center;
   padding: 10px;
   font-size: 16px;
   font-weight: normal;
-  margin: 10px 0px;
   border-radius: 1px;
+  margin-bottom: 0px;
 }
 
 .active {

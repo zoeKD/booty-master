@@ -10,9 +10,11 @@ class Video < ApplicationRecord
 
   after_save :set_default_picture
 
+  TAG_LIST = %w(fullbody cardio legs arms core stretching)
+
   def set_default_picture
     if thumbnail == "" || thumbnail.nil?
-      self.update(thumbnail: "https://i.ytimg.com/vi/9ZWZ4Aha6eM/sddefault.jpg")
+      self.update(thumbnail: ActionController::Base.helpers.image_path("placeholder-video.png"))
    end
  end
 end

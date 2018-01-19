@@ -9,6 +9,16 @@ abbr {
   text-decoration: none;
 }
 
+button {
+  border: 0;
+  &:hover {
+    border: 0;
+  }
+}
+
+h2 {
+  margin-left: -20px;
+}
 
 .content{
   margin-left: 200px;

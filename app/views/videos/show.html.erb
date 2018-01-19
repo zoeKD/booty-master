@@ -1,0 +1,21 @@
+<div class="text-center">
+  <h2>Go go vidéo !</h2>
+</div>
+
+<div>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/${video.id}" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+</div>
+<button class="btn btn-primary btn-form">J'ai fini cette video !</button>
+
+<div>
+  <h4>Historique</h4>
+</div>
+
+<div>
+  <h4>Vidéos similaires</h4>
+</div>
+
+<%= link_to "Editer", edit_video_path(@video) %>
+<%= link_to "Supprimer", video_path(@video),
+             method: :delete,
+             data: { confirm: "Are you sure?" } %>

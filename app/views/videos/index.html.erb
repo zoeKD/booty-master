@@ -1,8 +1,60 @@
-<% @videos.each do |video| %>
-  <img src="<%= image_path video.thumbnail unless video.thumbnail.nil? %>" class="video-thumbnail">
-  <%= video.name %>
-  <%= link_to "Editer", edit_video_path(video) %>
-<% end %>
+<div class="text-center">
+  <h2>Shaper ce booty</h2>
+</div>
+
+<div class="container">
+  <div class="filter-container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <p>Filtrer par intensité</p>
+        <div>
+          <a href="/videos?intensity=1">
+            <span class="intensity-tag big-tag"><i class="fa fa-bolt" aria-hidden="true"></i> Basse</span>
+          </a>
+          <a href="/videos?intensity=2">
+            <span class="intensity-tag big-tag"><% 2.times do %><i class="fa fa-bolt" aria-hidden="true"></i> <% end %>Moyenne</span>
+          </a>
+          <a href="/videos?intensity=3">
+           <span class="intensity-tag big-tag"><% 3.times do %><i class="fa fa-bolt" aria-hidden="true"></i> <% end %>Haute</span>
+         </a>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <p>Filtrer par zone</p>
+        <div>
+          <% @tag_list.each do |tag| %>
+            <a href="/videos?zone=<%= tag %>">
+              <span class="zone-tag big-tag"><%= tag.capitalize %></span>
+            </a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <% @videos.each do |video| %>
+
+      <div class="col-xs-6 col-sm-4 col-md-3">
+        <%= link_to video_path(video) do %>
+          <div class="video-card hvr-float">
+            <div class="image-card" style="background-image: url(<%= image_path video.thumbnail unless video.thumbnail.nil? %>)" class="video-thumbnail">
+            </div>
+            <div class="footer-card">
+              <p class="card-title"><%= truncate video.name, length: 32, omission: '...' %></p>
+              <div class="card-details">
+                <div class="card-zones"><% video.tag_list.each do |tag| %>
+                  <span class="zone-tag"><%= tag.capitalize %></span>
+                 <% end %>
+                </div>
+                <p class="intensity-card"><% video.intensity.times do %><i class="fa fa-bolt" aria-hidden="true"></i> <% end %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 
 <% if @videos.size == 0 %>

@@ -12,20 +12,14 @@
     </div>
   </div>
   <%= f.input :description, value: video.description %>
-  <label class="control-label string required"><abbr title="required">*</abbr>Intensité</label>
+  <label class="control-label string required"><abbr title="required">* </abbr>Intensité</label>
   <div class="form-inline inline-intensity">
-    <input type="radio" class="hidden" value=1 name="intensity" id="intensity1">
-    <label for="intensity1" class="intensity-selector">Basse</label>
-    <input type="radio" class="hidden" value=2 name="intensity" id="intensity2">
-    <label for="intensity2" class="intensity-selector">Moyenne</label>
-    <input type="radio" class="hidden" value=3 name="intensity" id="intensity3">
-    <label for="intensity3" class="intensity-selector">Haute</label>
+    <%= f.collection_radio_buttons :intensity, [[1, 'Basse'],[2, 'Moyenne'], [3, 'Haute']], :first, :last %>
   </div>
-<!--   <label class="control-label string required"><abbr title="required">*</abbr>Zone du corps</label> -->
-<!--   <div class="form-inline inline-intensity"> -->
-<!--     <input type="checkbox" class="hidden" value=1 name="intensity" id="intensity1"> -->
-<!--     <label for="intensity1" class="intensity-selector">Basse</label> -->
-<!--   </div> -->
+  <label class="control-label string required"><abbr title="required">* </abbr>Zone du corps</label>
+  <div class="form-inline inline-zone">
+    <%= f.collection_check_boxes :tag_list, [['fullbody', 'Full body'],['cardio', 'Cardio'], ['legs', 'Legs'], ['core', 'Core'], ['arms', 'Arms'], ['stretching', 'Streching']], :first, :last %>
+  </div>
 
-  <%= f.button :submit, class: "btn btn-primary", label: "Créer la video" %>
+  <%= f.button :submit,  "C'est parti", class: "btn btn-primary btn-form"%>
 <% end %>

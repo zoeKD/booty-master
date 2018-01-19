@@ -3,7 +3,14 @@ class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 
   def index
-    @videos = Video.all
+    @tag_list = Video::TAG_LIST
+    if params[:intensity].present?
+      @videos = Video.where(intensity: params[:intensity])
+    elsif params[:zone].present?
+      @videos = Video.tagged_with(params[:zone])
+    else
+      @videos = Video.all
+    end
   end
 
   def show
@@ -15,7 +22,7 @@ class VideosController < ApplicationController
 
   def create
     @video = Video.new(video_params)
-    @video.intensity = params[:intensity]
+    params[:video][:tag_list].each { |tag| @video.tag_list.add(tag)}
     @video.user = @user
     if @video.save
       redirect_to videos_path
@@ -29,7 +36,8 @@ class VideosController < ApplicationController
   end
 
   def update
-    @video.intensity = params[:intensity] if params[:intensity]
+    @video.tag_list = ""
+    params[:video][:tag_list].each { |tag| @video.tag_list.add(tag)}
     if @video.update(video_params)
       redirect_to videos_path
     else
@@ -53,7 +61,7 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:name, :url, :description, :tag_list, :video_duration,
-     :intensity, :user)
+    params.require(:video).permit(:name, :url, :description, :video_duration,
+     :intensity, :user, :thumbnail)
   end
 end

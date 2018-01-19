@@ -13,7 +13,11 @@ const convertYTDuration = (duration) => {
 const fillOutForm = (data) => {
   document.getElementById("video_name").value = data.items[0].snippet.title;
   document.getElementById("video_description").value = data.items[0].snippet.description;
-  document.getElementById("video_thumbnail").value = data.items[0].snippet.thumbnails.standard.url;
+  if(data.items[0].snippet.thumbnails.standard) {
+    document.getElementById("video_thumbnail").value = data.items[0].snippet.thumbnails.standard.url;
+  } else {
+    document.getElementById("video_thumbnail").value = data.items[0].snippet.thumbnails.default.url;
+  }
   const durationInSeconds = convertYTDuration(data.items[0].contentDetails.duration);
   document.getElementById("video_video_duration").value = durationInSeconds;
   const minutes = Math.floor(durationInSeconds / 60);
